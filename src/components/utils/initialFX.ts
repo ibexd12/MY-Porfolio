@@ -19,10 +19,11 @@ export function initialFX() {
 
   gsap.fromTo(
     landingTextElements,
-    { opacity: 0, y: 80 },
+    { opacity: 0, y: 80, filter: "blur(5px)" },
     {
       opacity: 1,
       duration: 1.2,
+      filter: "blur(0px)",
       ease: "power3.inOut",
       y: 0,
       stagger: 0.1,
@@ -41,30 +42,61 @@ export function initialFX() {
     }
   );
 
-  const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+  LoopText(".landing-h2-info", ".landing-h2-info-1");
+  LoopText(".landing-h2-1", ".landing-h2-2");
+}
+
+function LoopText(Text1: string, Text2: string) {
+  var tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+  const delay = 4;
+  const delay2 = delay * 2 + 1;
 
   tl.fromTo(
-    ".landing-h2-2, .landing-h2-info-1",
+    Text2,
     { opacity: 0, y: 80 },
-    { opacity: 1, y: 0, duration: 1.2, ease: "power3.inOut", stagger: 0.1, delay: 3 },
+    {
+      opacity: 1,
+      duration: 1.2,
+      ease: "power3.inOut",
+      y: 0,
+      stagger: 0.1,
+      delay: delay,
+    },
     0
   )
-  .fromTo(
-    ".landing-h2-1, .landing-h2-info",
-    { y: 0 },
-    { y: -80, duration: 1.2, ease: "power3.inOut", stagger: 0.1, delay: 3 },
-    1
-  )
-  .fromTo(
-    ".landing-h2-1, .landing-h2-info",
-    { y: -80, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1.2, ease: "power3.inOut", stagger: 0.1, delay: 3 },
-    2
-  )
-  .fromTo(
-    ".landing-h2-2, .landing-h2-info-1",
-    { y: 0 },
-    { y: -80, opacity: 0, duration: 1.2, ease: "power3.inOut", stagger: 0.1, delay: 3 },
-    3
-  );
+    .fromTo(
+      Text1,
+      { y: 80 },
+      {
+        duration: 1.2,
+        ease: "power3.inOut",
+        y: 0,
+        stagger: 0.1,
+        delay: delay2,
+      },
+      1
+    )
+    .fromTo(
+      Text1,
+      { y: 0 },
+      {
+        y: -80,
+        duration: 1.2,
+        ease: "power3.inOut",
+        stagger: 0.1,
+        delay: delay,
+      },
+      0
+    )
+    .to(
+      Text2,
+      {
+        y: -80,
+        duration: 1.2,
+        ease: "power3.inOut",
+        stagger: 0.1,
+        delay: delay2,
+      },
+      1
+    );
 }
