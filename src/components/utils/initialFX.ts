@@ -42,6 +42,8 @@ export function initialFX() {
     }
   );
 
+  gsap.set(".landing-h2-info-1, .landing-h2-2", { opacity: 0, y: 80 });
+
   LoopText(".landing-h2-info", ".landing-h2-info-1");
   LoopText(".landing-h2-1", ".landing-h2-2");
 }
