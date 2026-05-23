@@ -19,11 +19,10 @@ export function initialFX() {
 
   gsap.fromTo(
     landingTextElements,
-    { opacity: 0, y: 80, filter: "blur(5px)" },
+    { opacity: 0, y: 80 },
     {
       opacity: 1,
       duration: 1.2,
-      filter: "blur(0px)",
       ease: "power3.inOut",
       y: 0,
       stagger: 0.1,
@@ -72,7 +71,6 @@ function LoopText(Text1: string, Text2: string) {
       y: -80,
       duration: 1.2,
       ease: "power3.inOut",
-      stagger: 0.1,
       delay: delay,
     },
     0
@@ -85,7 +83,6 @@ function LoopText(Text1: string, Text2: string) {
         y: 0,
         duration: 1.2,
         ease: "power3.inOut",
-        stagger: 0.1,
         delay: delay2,
       },
       1
@@ -97,7 +94,6 @@ function LoopText(Text1: string, Text2: string) {
         y: -80,
         duration: 1.2,
         ease: "power3.inOut",
-        stagger: 0.1,
         delay: delay,
       },
       2
@@ -110,7 +106,6 @@ function LoopText(Text1: string, Text2: string) {
         y: 0,
         duration: 1.2,
         ease: "power3.inOut",
-        stagger: 0.1,
         delay: delay2,
       },
       3
