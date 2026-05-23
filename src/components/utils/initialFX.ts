@@ -14,7 +14,7 @@ export function initialFX() {
   });
 
   const landingTextElements = document.querySelectorAll(
-    [".landing-info h3", ".landing-intro h2", ".landing-intro h1", ".landing-info h2"].join(",")
+    [".landing-info h3", ".landing-intro h2", ".landing-intro h1"].join(",")
   );
 
   gsap.fromTo(
@@ -39,5 +39,32 @@ export function initialFX() {
       ease: "power1.inOut",
       delay: 0.1,
     }
+  );
+
+  const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+
+  tl.fromTo(
+    ".landing-h2-2, .landing-h2-info-1",
+    { opacity: 0, y: 80 },
+    { opacity: 1, y: 0, duration: 1.2, ease: "power3.inOut", stagger: 0.1, delay: 3 },
+    0
+  )
+  .fromTo(
+    ".landing-h2-1, .landing-h2-info",
+    { y: 0 },
+    { y: -80, duration: 1.2, ease: "power3.inOut", stagger: 0.1, delay: 3 },
+    1
+  )
+  .fromTo(
+    ".landing-h2-1, .landing-h2-info",
+    { y: -80, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1.2, ease: "power3.inOut", stagger: 0.1, delay: 3 },
+    2
+  )
+  .fromTo(
+    ".landing-h2-2, .landing-h2-info-1",
+    { y: 0 },
+    { y: -80, opacity: 0, duration: 1.2, ease: "power3.inOut", stagger: 0.1, delay: 3 },
+    3
   );
 }
