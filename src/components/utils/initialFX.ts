@@ -32,20 +32,6 @@ export function initialFX() {
   );
 
   gsap.fromTo(
-    ".landing-h2-info",
-    { opacity: 0, y: 80, filter: "blur(5px)" },
-    {
-      opacity: 1,
-      duration: 1.2,
-      filter: "blur(0px)",
-      ease: "power3.inOut",
-      y: 0,
-      stagger: 0.1,
-      delay: 0.3,
-    }
-  );
-
-  gsap.fromTo(
     ".landing-info-h2",
     { opacity: 0, y: 30 },
     {
@@ -79,52 +65,54 @@ function LoopText(Text1: string, Text2: string) {
   const delay = 4;
   const delay2 = delay * 2 + 1;
 
-  tl.fromTo(
-    Text2,
-    { opacity: 0, y: 80 },
+  tl.to(
+    Text1,
     {
-      opacity: 1,
+      opacity: 0,
+      y: -80,
       duration: 1.2,
       ease: "power3.inOut",
-      y: 0,
       stagger: 0.1,
       delay: delay,
     },
     0
   )
     .fromTo(
-      Text1,
-      { y: 80 },
+      Text2,
+      { opacity: 0, y: 80 },
       {
+        opacity: 1,
+        y: 0,
         duration: 1.2,
         ease: "power3.inOut",
-        y: 0,
         stagger: 0.1,
         delay: delay2,
       },
       1
     )
-    .fromTo(
-      Text1,
-      { y: 0 },
+    .to(
+      Text2,
       {
+        opacity: 0,
         y: -80,
         duration: 1.2,
         ease: "power3.inOut",
         stagger: 0.1,
         delay: delay,
       },
-      0
+      2
     )
-    .to(
-      Text2,
+    .fromTo(
+      Text1,
+      { opacity: 0, y: 80 },
       {
-        y: -80,
+        opacity: 1,
+        y: 0,
         duration: 1.2,
         ease: "power3.inOut",
         stagger: 0.1,
         delay: delay2,
       },
-      1
+      3
     );
 }
